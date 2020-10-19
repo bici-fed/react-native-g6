@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Native G6</title>
+    <style>
+      html,
+      body,
+      #container {
+        height: 100%;
+        width: 100%;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    </style>
+    <!-- cdn for g6, if your project deploy locally, replace it with a full script -->
+    <script src="https://gw.alipayobjects.com/os/lib/antv/g6/3.7.1/dist/g6.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <!-- inject util tools script -->
+    <script>
+      function getCircularReplacer() {
+        var seen = new WeakSet();
+        return function (key, value) {
+          if (typeof value === "object" && value !== null) {
+            if (seen.has(value)) {
+              return;
+            }
+            seen.add(value);
+          }
+          return value;
+        };
+      }
+      function stringify(data) {
+        return JSON.stringify(data, getCircularReplacer());
+      }
+    </script>
+  </body>
+</html>
