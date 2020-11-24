@@ -14,20 +14,7 @@ class ReactNativeG6 extends React.PureComponent {
     this.webview = React.createRef();
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { data } = this.props;
-    if (data !== nextProps.data) {
-      this.update(nextProps.data);
-    }
-  }
-
-  update = (data) => {
-    const stringifyData = JSON.stringify(data);
-    const updateScript = `chart.changeData(${stringifyData});`;
-    this.webview.current.injectJavaScript(updateScript);
-  };
-
-  reload = (script) => this.chart.current.injectJavaScript(script);
+  reload = () => this.webview.current.reload();
 
   onMessage = (event) => {
     const { onMessage } = this.props;

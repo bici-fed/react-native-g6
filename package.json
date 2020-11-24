@@ -1,6 +1,6 @@
 {
   "name": "react-native-g6",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "G6 implement in react-native, based on react-native-webview.",
   "main": "src/index.js",
   "scripts": {},
